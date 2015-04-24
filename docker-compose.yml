@@ -6,9 +6,9 @@ api:
     - db
   environment:
     - DATABASE_URI=postgres://base_api:pwgen_-sny_40@db:5432/postgres
-  command: /usr/src/app/venv/bin/gunicorn -w 2 -b :8000 run:app
+  command: /usr/src/app/venv/bin/gunicorn -w 2 -b :5000 run:app
   ports:
-    - 8000:8000
+    - 5000:5000
 db:
   restart: always
   image: postgres
