@@ -35,15 +35,11 @@ class Health(object):
             lambda p: 'gunicorn' in p.name(),
             psutil.process_iter(),
         )
-        mem_percentages = map(lambda p: p.memory_percent(), gunicorn_procs)
+        mem_percentages = [p.memory_percent() for p in gunicorn_procs]
 
         return dict(
             db_connected=VersionHistory.is_connected(),
             mem_total_percent_used=psutil.virtual_memory().percent,
-            mem_proc_percent_used=reduce(
-                lambda a, b: a + b,
-                mem_percentages,
-                0.0,
-            ),
-            num_api_processes=len(gunicorn_procs),
+            mem_proc_percent_used=sum(mem_percentages) + 0.0,  # maintain types
+            num_api_processes=len(mem_percentages),
         )

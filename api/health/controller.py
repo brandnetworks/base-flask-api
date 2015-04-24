@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from model import Health
+from .model import Health
 
 blueprint = Blueprint('health', __name__)
 

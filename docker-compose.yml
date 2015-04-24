@@ -5,7 +5,7 @@ api:
   links:
     - db
   environment:
-    - DATABASE_URI=postgres://base_api:pwgen_-sny_40@db:5432/postgres
+    - DATABASE_URI=postgresql://base_api:pwgen_-sny_40@db:5432/postgres
   command: /usr/src/app/venv/bin/gunicorn -w 2 -b :5000 run:app
   ports:
     - 5000:5000

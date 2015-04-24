@@ -14,7 +14,7 @@ def create_app():
 
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
         'DATABASE_URI',
-        'postgres://base_api:pwgen_-sny_40@' + docker_ip + ':5432/postgres'
+        'postgresql://base_api:pwgen_-sny_40@' + docker_ip + ':5432/postgres'
     )
 
     @app.route('/', methods=['GET'])
@@ -25,7 +25,7 @@ def create_app():
     def not_found(error):
         return jsonify(error='not found'), 404
 
-    from health.controller import blueprint as health_module
+    from .health.controller import blueprint as health_module
     app.register_blueprint(health_module, url_prefix='/health')
 
     db.init_app(app)

@@ -14,7 +14,7 @@ class TestRoutes(unittest.TestCase):
 
     def test_root_health(self):
         response = self.test_client.get('/health/')
-        data = json.loads(response.get_data())
+        data = json.loads(response.get_data().decode('utf-8'))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.mimetype, 'application/json')
         self.assertIsInstance(data['db_connected'], bool)

@@ -14,14 +14,14 @@ class TestIndex(unittest.TestCase):
 
     def test_index(self):
         response = self.test_client.get('/')
-        data = json.loads(response.get_data())
+        data = json.loads(response.get_data().decode('utf-8'))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.mimetype, 'application/json')
         self.assertEqual(data['status'], 'ok')
 
     def test_404(self):
         response = self.test_client.get('/dne')
-        data = json.loads(response.get_data())
+        data = json.loads(response.get_data().decode('utf-8'))
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.mimetype, 'application/json')
         self.assertEqual(data['error'], 'not found')
