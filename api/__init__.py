@@ -1,5 +1,4 @@
 import os
-import re
 from flask import Flask, jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -9,12 +8,9 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
 
-    docker_host = re.match('tcp://(.*):', os.getenv('DOCKER_HOST', ''))
-    docker_ip = docker_host.group(1) if docker_host else ''
-
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
         'DATABASE_URI',
-        'postgresql://base_api:pwgen_-sny_40@' + docker_ip + ':5432/postgres'
+        'postgresql://base_api:pwgen_-sny_40@localhost:5432/postgres'
     )
 
     @app.route('/', methods=['GET'])

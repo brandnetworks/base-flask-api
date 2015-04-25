@@ -1,4 +1,5 @@
 SRC_FILES=$(shell find . -name '*.py' | grep -v 'venv')
+DOCKER_IP=$(shell boot2docker ip)
 
 all: docker
 
@@ -20,7 +21,8 @@ clean:
 
 dev: clean
 	docker-compose up -d db
-	./run.py
+	DATABASE_URI=postgresql://base_api:pwgen_-sny_40@$(DOCKER_IP):5432/postgres \
+		./run.py
 
 dev-docker: clean
 	docker-compose build
