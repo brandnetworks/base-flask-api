@@ -7,8 +7,8 @@ Getting Started
 To start development:
 
 ```
-$ brew install python
-$ virtualenv venv
+$ brew install python3
+$ virtualenv --python=python3 venv
 $ source venv/bin/activate
 $ make install
 $ make test
@@ -43,5 +43,5 @@ To build a Docker image for distribution:
 
 ```
 docker build -t geowa4/base-flask-api .
-docker run --rm -it -p 5000:5000 -e 'DATABASE_URI=postgres://' geowa4/base-flask-api
+docker run --rm -it -p 5000:5000 -e 'DATABASE_URI=postgresql://' geowa4/base-flask-api
 ```

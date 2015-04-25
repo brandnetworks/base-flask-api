@@ -1,6 +1,6 @@
 import unittest
 from api import create_app
-from model import Health
+from .model import Health
 
 
 # class TestVersionHistory(unittest.TestCase):

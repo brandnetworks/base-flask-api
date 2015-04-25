@@ -13,6 +13,6 @@ psutil==2.2.1
 psycopg2==2.6
 pyflakes==0.8.1
 PyYAML==3.11
-SQLAlchemy==1.0.0
+SQLAlchemy==1.0.1
 watchdog==0.8.3
 Werkzeug==0.10.4
