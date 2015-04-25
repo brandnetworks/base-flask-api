@@ -14,4 +14,4 @@ COPY api /usr/src/app/api
 RUN /usr/src/app/venv/bin/flake8 $(find /usr/src/app -name '*.py' | grep -v 'venv') &&\
     /usr/src/app/venv/bin/python -m unittest discover
 #CMD [ "tar", "-cf", "-", "." ]
-CMD [ "venv/bin/gunicorn", "-w", "2", "-b", ":8000", "run:app" ]
+CMD [ "venv/bin/gunicorn", "-w", "2", "-b", ":5000", "run:app" ]
