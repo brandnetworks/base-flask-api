@@ -1,6 +1,7 @@
 import os
 from flask import Flask, jsonify
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 db = SQLAlchemy()
 
@@ -12,6 +13,8 @@ def create_app():
         'DATABASE_URI',
         'postgresql://base_api:pwgen_-sny_40@localhost:5432/postgres'
     )
+
+    CORS(app)
 
     @app.route('/', methods=['GET'])
     def index():
