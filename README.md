@@ -14,6 +14,8 @@ $ make install
 $ make test
 ```
 
+Note: In order to successfully run the `make install` command, you must have PostgreSQL installed on your local machine. On Macs this can be done with the Homebrew command `brew install postgresql`
+
 To get it running, there are two options:
 
 The first runs Postgres in a Docker container and the API locally in debug mode.
